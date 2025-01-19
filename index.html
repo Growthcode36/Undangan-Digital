@@ -270,8 +270,8 @@
     });
 
     // Function to auto-scroll pages
-    let currentPage = 1;
-    const totalPages = 6;
+    let currentPage = 0.5;
+    const totalPages = 12;
 
     function autoScrollPage() {
       if (currentPage < totalPages) {
@@ -295,10 +295,10 @@
       // Scroll smoothly to page 2
       setTimeout(function() {
         document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
-      }, 3000);
+      }, 200);
 
       // Start auto-scroll after a delay
-      setInterval(autoScrollPage, 6000); // Scroll every 1000ms (5 seconds)
+      setInterval(autoScrollPage, 5000); // Scroll every 1000ms (5 seconds)
     });
   </script>
 </body>

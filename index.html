@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS yang mendukung halaman dan video */
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: auto;
+    }
+    .container {
+      width: 100%;
+    }
+    .guest-text {
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      font-size: 1.5rem;
+      color: rgb(224, 203, 12);
+      font-weight: bold;
+    }
+    .btn-container {
+      position: absolute;
+      bottom: 16%;
+      left: 50%;
+    }
+    .btn-open {
+      padding: 10px 20px;
+      background-color: #f7af15;
+      color: rgb(8, 8, 8);
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-open:hover {
+      background-color: #45c911;
+    }
+    .countdown-timer {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      font-size: 2rem;
+      color: white;
+    }
+    .timer-item {
+      margin: 0 10px;
+      text-align: center;
+    }
+    .map-container {
+      width: 50%;
+      height: 20vh;
+    }
+    .confirmation-form {
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.8rem;
+    }
+    .confirmation-form textarea {
+      width: 100%;
+      padding: 20px;
+      margin: 30px 0;
+    }
+    /* Footer Link */
+.footer-link {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(153, 101, 5, 0.7);
+  padding: 10px;
+}
+    .footer-link a {
+      color: #1b28e2;
+      text-decoration: none;
+    }
+    /* Style untuk bagian rekening */
+    /* Gift Section */
+   .gift-section {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1.2rem;
+    color: black;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    max-width: 80%;}
+        .gift-section img {
+        margin-top: 20px;
+        max-width: 200px;
+    }
+
+ .accountInput {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 80%;
+  margin: 10px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <audio id="backgroundAudio">
+    <source src="audio/lagu.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="container" id="videoContainer">
+    <!-- Page 1 -->
+    <div class="video-wrapper" id="page1">
+      <video src="images/video1.mp4" autoplay loop muted></video>
+      <div class="guest-text" id="guestText1">Tisa & Partner</div>
+      <div class="btn-container">
+        <button class="btn-open" id="openButton1">Buka Undangan</button>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="video-wrapper" id="page2" style="display:none;">
+      <video src="images/video2.mp4" autoplay loop muted></video>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="video-wrapper" id="page3" style="display:none;">
+      <video src="images/video3.mp4" autoplay loop muted></video>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-timer">
+        <div class="timer-item">
+          <span id="days"></span>
+          <div>Hari</div>
+        </div>
+        <div class="timer-item">
+          <span id="hours"></span>
+          <div>Jam</div>
+        </div>
+        <div class="timer-item">
+          <span id="minutes"></span>
+          <div>Menit</div>
+        </div>
+        <div class="timer-item">
+          <span id="seconds"></span>
+          <div>Detik</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="video-wrapper" id="page4" style="display:none;">
+      <video src="images/video4.mp4" autoplay loop muted></video>
+
+      <!-- Link to Google Maps -->
+      <div class="gmaps-link">
+        <a href="https://maps.app.goo.gl/ko1bzLdXrrgB9Dk89" target="_blank">Lihat GMaps</a>
+      </div>
+
+      <!-- Embedded Map -->
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="video-wrapper" id="page5" style="display:none;">
+      <video src="images/video5.mp4" autoplay loop muted></video>
+
+      <!-- Confirm Attendance and Message Form -->
+      <div class="confirmation-form">
+        <h2>Konfirmasi Kehadiran</h2>
+        <form id="confirmationForm">
+          <textarea id="message" placeholder="Tulis pesan Anda..." rows="4" cols="40"></textarea><br><br>
+          <button type="submit">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Page 6 -->
+   <div class="video-wrapper" id="page6" style="display:none;">
+    <video src="images/video6.mp4" autoplay loop muted></video>
+    
+    <!-- Gift Section -->
+    <div class="gift-section">
+      <h2>Kirim Gift</h2>
+      <p>Nama Rekening: <strong>BRI</strong></p>
+      <p>No. Rekening:</p>
+      <input id="accountInput" type="text" value="1234567" readonly> <!-- Menjadikan input bisa disalin -->
+      <p>A/N: <strong>Fauzia Arvia Ramadhani</strong></p>
+      <img src="images\bank.png" alt="Bank Logo">
+    </div>
+  
+    <!-- Footer Link -->
+    <div class="footer-link">
+      <p>Original Design By 
+        <a href="https://www.instagram.com/tisa_a36?igsh=eHhyNDNydmk3ZHRu" target="_blank">Tisa Anggraini </a>| 2025
+      </p>
+    </div>
+  </div>
+  
+
+  <script>
+    // Countdown to 14 February 2025
+    const countdownDate = new Date("Feb 14, 2025 00:00:00").getTime();
+
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in elements
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      // If the countdown is finished, write some text
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("days").innerHTML = "EXPIRED";
+        document.getElementById("hours").innerHTML = "";
+        document.getElementById("minutes").innerHTML = "";
+        document.getElementById("seconds").innerHTML = "";
+      }
+    }, 1000);
+
+    // Handle message form submission
+    document.getElementById('confirmationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const message = document.getElementById('message').value;
+      alert("Pesan Anda: " + message); // Display message in popup
+    });
+
+    // Function to auto-scroll pages
+    let currentPage = 1;
+    const totalPages = 6;
+
+    function autoScrollPage() {
+      if (currentPage < totalPages) {
+        currentPage++;
+        document.getElementById(`page${currentPage}`).scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Wait for the "Buka Undangan" button to be clicked before starting the scroll
+    document.getElementById('openButton1').addEventListener('click', function() {
+      document.getElementById('backgroundAudio').play(); // Play audio when Button is clicked
+      document.getElementById('page2').style.display = 'block'; // Unhide Page 2
+      document.getElementById('page1').style.display = 'none'; // Hide Page 1 after button click
+
+      // Unhide the rest of the pages
+      document.getElementById('page3').style.display = 'block';
+      document.getElementById('page4').style.display = 'block';
+      document.getElementById('page5').style.display = 'block';
+      document.getElementById('page6').style.display = 'block';
+
+      // Scroll smoothly to page 2
+      setTimeout(function() {
+        document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
+      }, 3000);
+
+      // Start auto-scroll after a delay
+      setInterval(autoScrollPage, 3000); // Scroll every 1000ms (5 seconds)
+    });
+  </script>
+</body>
+</html>

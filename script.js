@@ -34,3 +34,20 @@ document.getElementById('openButton1').addEventListener('click', function() {
   // Mulai animasi scroll
   smoothScroll();
 });
+
+// Fungsi untuk mendapatkan parameter dari URL dan menampilkan nama tamu
+function getGuestName() {
+    // Ambil parameter 'guest' dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get("guest");
+
+    // Jika tidak ada parameter, gunakan nama default
+    const displayName = guestName ? decodeURIComponent(guestName) : "Tamu Spesial";
+
+    // Ganti teks di elemen dengan ID 'guestText1'
+    document.getElementById("guestText1").textContent = displayName;
+}
+
+// Panggil fungsi setelah halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", getGuestName);
+

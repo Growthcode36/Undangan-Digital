@@ -293,19 +293,22 @@ Fguest<!DOCTYPE html>
       // Start auto-scroll after a delay
       setInterval(autoScrollPage, 3000); // Scroll every 1000ms (5 seconds)
     });
-     // Ambil parameter "guest" dari URL
-    function getGuestName() {
+  // Fungsi untuk mengambil parameter dari URL
+  function getParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('guest') || 'Tamu Terhormat'; // Jika tidak ada parameter guest, tampilkan "Tamu Terhormat"
+    return urlParams.get(name);
   }
 
-    // Ubah teks tamu berdasarkanURL
-    document.addEventListener("DOMContentLoaded", function () {
-      const guestTextElement = document.getElementById("guestText1");
-      if (guestTextElement) {
-        guestTextElement.textContent = getGuestName();
-      }
-    });
+  // Fungsi untuk menampilkan nama tamu dan rekan
+  document.addEventListener("DOMContentLoaded", function () {
+    const guestTextElement = document.getElementById("guestText1");
+    const guestName = getParameter('namatamu') || 'Tamu Terhormat';
+    const companionName = getParameter('rekan') || 'Rekan Terhormat';
+
+    if (guestTextElement) {
+      guestTextElement.textContent = `Selamat datang, ${guestName} dan ${companionName}!`;
+    }
+  }):
   </script>
 </body>
 </html>

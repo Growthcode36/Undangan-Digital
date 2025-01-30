@@ -34,20 +34,19 @@ document.getElementById('openButton1').addEventListener('click', function() {
   // Mulai animasi scroll
   smoothScroll();
 });
-
 // Fungsi untuk mendapatkan parameter dari URL dan menampilkan nama tamu
 function getGuestName() {
-    // Ambil parameter 'guest' dari URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get("guest");
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestName = urlParams.get("guest"); // Ambil parameter "guest"
 
-    // Jika tidak ada parameter, gunakan nama default
-    const displayName = guestName ? decodeURIComponent(guestName) : "Tamu Spesial";
-
-    // Ganti teks di elemen dengan ID 'guestText1'
-    document.getElementById("guestText1").textContent = displayName;
+  // Jika tidak ada parameter, gunakan nama default
+  return guestName ? decodeURIComponent(guestName) : "Tamu Spesial";
 }
 
-// Panggil fungsi setelah halaman selesai dimuat
-document.addEventListener("DOMContentLoaded", getGuestName);
-
+// Saat halaman dimuat, ubah teks tamu
+document.addEventListener("DOMContentLoaded", function () {
+  const guestTextElement = document.getElementById("guestText1");
+  if (guestTextElement) {
+      guestTextElement.textContent = getGuestName();
+  }
+});

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Fguest<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -294,9 +294,12 @@
       setInterval(autoScrollPage, 3000); // Scroll every 1000ms (5 seconds)
     });
      // Ambil parameter "guest" dari URL
-   
+    function getGuestName() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('guest') || 'Tamu Terhormat'; // Jika tidak ada parameter guest, tampilkan "Tamu Terhormat"
+  }
 
-    // Ubah teks tamu berdasarkan URL
+    // Ubah teks tamu berdasarkanURL
     document.addEventListener("DOMContentLoaded", function () {
       const guestTextElement = document.getElementById("guestText1");
       if (guestTextElement) {

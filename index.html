@@ -293,6 +293,19 @@
       // Start auto-scroll after a delay
       setInterval(autoScrollPage, 3000); // Scroll every 1000ms (5 seconds)
     });
+     // Ambil parameter "guest" dari URL
+    function getGuestName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('guest') || "Tisa & Partner"; // Default jika tidak ada parameter
+    }
+
+    // Ubah teks tamu berdasarkan URL
+    document.addEventListener("DOMContentLoaded", function () {
+      const guestTextElement = document.getElementById("guestText1");
+      if (guestTextElement) {
+        guestTextElement.textContent = getGuestName();
+      }
+    });
   </script>
 </body>
 </html>

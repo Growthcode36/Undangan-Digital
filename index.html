@@ -137,7 +137,7 @@
     <!-- Page 1 -->
     <div class="video-wrapper" id="page1">
       <video src="images/video1.mp4" autoplay loop muted></video>
-      <div class="guest-text" id="guestText1"></div>
+      <div class="guest-text" id="guestText1,guestText2,guestText3"></div>
       <div class="btn-container">
         <button class="btn-open" id="openButton1">Buka Undangan</button>
       </div>
@@ -301,7 +301,7 @@
 
     // Ubah teks tamu berdasarkan URL
     document.addEventListener("DOMContentLoaded", function () {
-      const guestTextElement = document.getElementById("guestText1");
+      const guestTextElement = document.getElementById("guestText1,guestText2,guestText3");
       if (guestTextElement) {
         guestTextElement.textContent = getGuestName();
       }

@@ -294,10 +294,7 @@
       setInterval(autoScrollPage, 3000); // Scroll every 1000ms (5 seconds)
     });
      // Ambil parameter "guest" dari URL
-    function getGuestName() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('guest & guest2') || "guestText1"; // Default jika tidak ada parameter
-    }
+   
 
     // Ubah teks tamu berdasarkan URL
     document.addEventListener("DOMContentLoaded", function () {
